@@ -1,3 +1,6 @@
+ Lexicographically smallest string
+
+
 class Solution {
     static String lexicographicallySmallest(String S, int k) {
         // code here
