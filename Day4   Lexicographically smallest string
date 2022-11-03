@@ -1,0 +1,100 @@
+class Solution {
+    static String lexicographicallySmallest(String S, int k) {
+        // code here
+        
+        if(power(S.length()))
+
+            k/=2;
+
+        else
+
+            k*=2;
+
+        
+
+        if(k>=S.length())
+
+            return "-1";
+
+            
+
+        Stack<Character> stk=new Stack<>();
+
+        int count=0;
+
+        
+
+        for(int i=0;i<S.length();i++)
+
+        {
+
+            char ch=S.charAt(i);
+
+            while(!stk.empty() && count<k && stk.peek()>ch)
+
+            {
+
+                count++;
+
+                stk.pop();
+
+            }
+
+            stk.push(ch);
+
+        }
+
+        while(stk.size()>S.length()-k)
+
+        {
+
+            stk.pop();
+
+        }
+
+        
+
+        StringBuilder ans=new StringBuilder();
+
+        while(!stk.empty())
+
+        {
+
+            ans.append(stk.peek());
+
+            stk.pop();
+
+        }
+
+        ans.reverse();
+
+        
+
+        return ans.toString();
+
+    }
+
+    static boolean power(int n)
+
+    {
+
+        if (n == 0)
+
+            return false;
+
+ 
+
+        while (n != 1) {
+
+            if (n % 2 != 0)
+
+                return false;
+
+            n = n / 2;
+
+        }
+
+        return true;
+}
+}
+    
